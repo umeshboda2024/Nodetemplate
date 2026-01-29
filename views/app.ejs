@@ -1,0 +1,61 @@
+<form action="/createdata" method="get">
+
+  <!-- product name -->
+  <input type="text" name="productName"
+    placeholder="Product name"
+    value="<%= Updatedata ? Updatedata.productName : '' %>" />
+  <br><br>
+
+  <!-- image url -->
+  <input type="text" name="image" id="imageInput"
+    placeholder="Image URL"
+    value="<%= Updatedata ? Updatedata.image : '' %>" />
+  <br><br>
+
+  <img id="preview"
+       src="<%= Updatedata ? Updatedata.image : '' %>"
+       width="120"
+       style="<%= Updatedata ? 'display:block' : 'display:none' %>;border:1px solid #ccc;" />
+  <br><br>
+
+  <input type="text" name="from"
+    placeholder="From (country)"
+    value="<%= Updatedata ? Updatedata.from : '' %>" />
+  <br><br>
+
+  <input type="text" name="nutrients"
+    placeholder="Nutrients"
+    value="<%= Updatedata ? Updatedata.nutrients : '' %>" />
+  <br><br>
+
+  <input type="text" name="quantity"
+    placeholder="Quantity"
+    value="<%= Updatedata ? Updatedata.quantity : '' %>" />
+  <br><br>
+
+  <input type="number" name="price" step="0.01"
+    placeholder="Price"
+    value="<%= Updatedata ? Updatedata.price : '' %>" />
+  <br><br>
+
+ <select name="organic">
+  <option value="true" <%= Updatedata && Updatedata.organic == true ? 'selected' : '' %>>Organic</option>
+  <option value="false" <%= Updatedata && Updatedata.organic == false ? 'selected' : '' %>>Not Organic</option>
+</select>
+  <br><br>
+
+  <textarea name="description" placeholder="Description"><%= Updatedata ? Updatedata.description : '' %></textarea>
+  <br><br>
+
+  <button type="submit">Submit</button>
+</form>
+
+<script>
+  const input = document.getElementById("imageInput");
+  const preview = document.getElementById("preview");
+
+  input.addEventListener("input", () => {
+    preview.src = input.value;
+    preview.style.display = "block";
+  });
+</script>
