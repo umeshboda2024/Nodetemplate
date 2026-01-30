@@ -1,12 +1,12 @@
-<form action="/createdata" method="get">
+<form action="/createdata">
 
-  <!-- product name -->
+  <input type="text" name="id" value="<%= Updatedata ? Updatedata.id : '' %>">
+
   <input type="text" name="productName"
     placeholder="Product name"
     value="<%= Updatedata ? Updatedata.productName : '' %>" />
   <br><br>
 
-  <!-- image url -->
   <input type="text" name="image" id="imageInput"
     placeholder="Image URL"
     value="<%= Updatedata ? Updatedata.image : '' %>" />
@@ -14,8 +14,7 @@
 
   <img id="preview"
        src="<%= Updatedata ? Updatedata.image : '' %>"
-       width="120"
-       style="<%= Updatedata ? 'display:block' : 'display:none' %>;border:1px solid #ccc;" />
+       width="120" />
   <br><br>
 
   <input type="text" name="from"
@@ -38,10 +37,10 @@
     value="<%= Updatedata ? Updatedata.price : '' %>" />
   <br><br>
 
- <select name="organic">
-  <option value="true" <%= Updatedata && Updatedata.organic == true ? 'selected' : '' %>>Organic</option>
-  <option value="false" <%= Updatedata && Updatedata.organic == false ? 'selected' : '' %>>Not Organic</option>
-</select>
+  <select name="organic">
+    <option value="true" <%= Updatedata && Updatedata.organic == true ? 'selected' : '' %>>Organic</option>
+    <option value="false" <%= Updatedata && Updatedata.organic == false ? 'selected' : '' %>>Not Organic</option>
+  </select>
   <br><br>
 
   <textarea name="description" placeholder="Description"><%= Updatedata ? Updatedata.description : '' %></textarea>
@@ -49,13 +48,3 @@
 
   <button type="submit">Submit</button>
 </form>
-
-<script>
-  const input = document.getElementById("imageInput");
-  const preview = document.getElementById("preview");
-
-  input.addEventListener("input", () => {
-    preview.src = input.value;
-    preview.style.display = "block";
-  });
-</script>
